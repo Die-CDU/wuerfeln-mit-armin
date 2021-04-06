@@ -1,0 +1,38 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+
+      - uses: webfactory/ssh-agent@v0.4.1
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          BASE_BRANCH: main
+          BRANCH: gh-pages
+          CLEAN: true
+          FOLDER: dist
+          GIT_CONFIG_NAME: Der Armin
+          GIT_CONFIG_EMAIL: armin@wuerfelspiele.de
+          SINGLE_COMMIT: true
+          SSH: true
