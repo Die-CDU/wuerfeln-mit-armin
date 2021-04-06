@@ -4,8 +4,8 @@ module.exports = function (environment) {
   let ENV = {
     modulePrefix: 'wuerfeln-mit-armin',
     environment,
-    rootURL: '/',
-    locationType: 'auto',
+    rootURL: process.env.ROOT_URL ?? '/',
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

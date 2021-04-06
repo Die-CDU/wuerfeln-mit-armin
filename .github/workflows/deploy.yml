@@ -21,6 +21,8 @@ jobs:
 
       - run: yarn install --frozen-lockfile
       - run: yarn build
+        env:
+          ROOT_URL: "/wuerfeln-mit-armin"
 
       - uses: webfactory/ssh-agent@v0.4.1
         with:
