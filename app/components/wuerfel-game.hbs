@@ -1,15 +1,19 @@
-<blockquote local-class="game" ...attributes>
-  Was wir <em>jetzt</em> brauchen, ist {{if this.isMale5 "einen" "eine"}}
-  <button type="button" {{on "click" (fn this.reroll 1)}}>{{this.text1}}</button>
-  <button type="button" {{on "click" (fn this.reroll 2)}}>{{this.text2}}</button>
-  <button type="button" {{on "click" (fn this.reroll 3)}}>{{this.text3}}</button>
-  <button type="button" {{on "click" (fn this.reroll 4)}}>{{this.text4}}</button>
-  <button type="button" {{on "click" (fn this.reroll 5)}}>{{this.text5}}</button>
-  bis
-  <button type="button" {{on "click" (fn this.reroll 6)}}>{{this.text6}}</button>
-  zur
-  <button type="button" {{on "click" (fn this.reroll 7)}}>{{this.text7}}</button>
-  <button type="button" {{on "click" (fn this.reroll 8)}}>{{this.text8}}</button>
-  der
-  <button type="button" {{on "click" (fn this.reroll 9)}}>{{this.text9}}</button>
-</blockquote>
+<div local-class="game" ...attributes>
+  <blockquote local-class="quote">
+    Was wir <em>jetzt</em> brauchen, ist {{if this.isMale5 "einen" "eine"}}
+    <button type="button" local-class="button" {{on "click" (fn this.reroll 1)}}>{{this.text1}}</button>
+    <button type="button" local-class="button" {{on "click" (fn this.reroll 2)}}>{{this.text2}}</button>
+    <button type="button" local-class="button" {{on "click" (fn this.reroll 3)}}>{{this.text3}}</button>
+    <button type="button" local-class="button" {{on "click" (fn this.reroll 4)}}>{{this.text4}}</button>
+    <button type="button" local-class="button" {{on "click" (fn this.reroll 5)}}>{{this.text5}}</button>
+    bis
+    <button type="button" local-class="button" {{on "click" (fn this.reroll 6)}}>{{this.text6}}</button>
+    zur
+    <button type="button" local-class="button" {{on "click" (fn this.reroll 7)}}>{{this.text7}}</button>
+    <button type="button" local-class="button" {{on "click" (fn this.reroll 8)}}>{{this.text8}}</button>
+    der
+    <button type="button" local-class="button" {{on "click" (fn this.reroll 9)}}>{{this.text9}}</button>
+  </blockquote>
+
+  <button type="button" local-class="reroll-button" {{on "click" this.rerollAll}}>Nochmal würfeln</button>
+</div>
