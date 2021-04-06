@@ -3,15 +3,15 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class WuerfelGameComponent extends Component {
-  @tracked dice1;
-  @tracked dice2;
-  @tracked dice3;
-  @tracked dice4;
-  @tracked dice5;
-  @tracked dice6;
-  @tracked dice7;
-  @tracked dice8;
-  @tracked dice9;
+  @tracked dice1 = this._randomNumber();
+  @tracked dice2 = this._randomNumber();
+  @tracked dice3 = this._randomNumber();
+  @tracked dice4 = this._randomNumber();
+  @tracked dice5 = this._randomNumber();
+  @tracked dice6 = this._randomNumber();
+  @tracked dice7 = this._randomNumber();
+  @tracked dice8 = this._randomNumber();
+  @tracked dice9 = this._randomNumber();
 
   get text1() {
     const TEXTS1 = ['ein-', 'zwei-', 'drei-', 'vier-', 'fünf-', 'sechs-'];
@@ -112,11 +112,6 @@ export default class WuerfelGameComponent extends Component {
       'Bundeskanzlerin.',
     ];
     return TEXTS9[this.dice9 - 1];
-  }
-
-  constructor() {
-    super(...arguments);
-    this.rerollAll();
   }
 
   @action reroll(index) {
