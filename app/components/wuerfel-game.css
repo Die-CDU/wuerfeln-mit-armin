@@ -1,0 +1,11 @@
+.game {
+  font-size: 28px;
+  line-height: 50px;
+  font-weight: 200;
+}
+
+.game button {
+  font-size: 28px;
+  line-height: 40px;
+  font-weight: 200;
+}
