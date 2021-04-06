@@ -120,7 +120,6 @@ export default class WuerfelGameComponent extends Component {
   }
 
   @action reroll(index) {
-    console.log('rerol', index);
     this['dice' + index] = this._randomNumber();
   }
 
