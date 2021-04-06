@@ -1,14 +1,12 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { inject as service } from '@ember/service';
 import { guidFor } from '@ember/object/internals';
 
+import confetti from 'canvas-confetti';
 import copy from 'copy-text-to-clipboard';
 
 export default class WuerfelGameComponent extends Component {
-  @service confetti;
-
   id = guidFor(this);
 
   @tracked dice1 = this._randomNumber();
@@ -163,7 +161,7 @@ export default class WuerfelGameComponent extends Component {
 
   constructor() {
     super(...arguments);
-    this.confetti.load();
+    this.throwConfetti();
   }
 
   @action reroll(index) {
@@ -178,9 +176,17 @@ export default class WuerfelGameComponent extends Component {
       this.reroll(i);
     }
 
+    this.throwConfetti();
+  }
+
+  @action copy() {
+    copy(this.fullQuoteText);
+  }
+
+  throwConfetti() {
     let colors = ['#32302e', '#ca080c'];
 
-    this.confetti.fire({
+    confetti({
       particleCount: 50,
       angle: 60,
       spread: 55,
@@ -188,17 +194,13 @@ export default class WuerfelGameComponent extends Component {
       colors: colors,
     });
 
-    this.confetti.fire({
+    confetti({
       particleCount: 50,
       angle: 120,
       spread: 55,
       origin: { x: 1 },
       colors: colors,
     });
-  }
-
-  @action copy() {
-    copy(this.fullQuoteText);
   }
 
   _randomNumber() {
