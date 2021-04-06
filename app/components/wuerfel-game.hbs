@@ -1,5 +1,5 @@
 <div local-class="game" ...attributes>
-  <blockquote local-class="quote">
+  <blockquote id={{this.quoteId}} local-class="quote">
     Was wir <em>jetzt</em> brauchen, ist {{if this.isMale5 "einen" "eine"}}
     <button type="button" local-class="button" {{on "click" (fn this.reroll 1)}}>{{this.text1}}</button>
     <button type="button" local-class="button" {{on "click" (fn this.reroll 2)}}>{{this.text2}}</button>
@@ -16,5 +16,10 @@
   </blockquote>
   <div local-class="attribution">— Armin Laschet</div>
 
-  <button type="button" local-class="reroll-button" {{on "click" this.rerollAll}}>Nochmal würfeln</button>
+  <div local-class="buttons">
+    {{#if (is-clipboard-supported)}}
+      <button type="button" local-class="copy-button" {{on "click" this.copy}}>Kopieren</button>
+    {{/if}}
+    <button type="button" local-class="reroll-button" {{on "click" this.rerollAll}}>Nochmal würfeln</button>
+  </div>
 </div>

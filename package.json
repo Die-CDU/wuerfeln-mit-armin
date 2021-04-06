@@ -19,7 +19,8 @@
     "test": "ember test"
   },
   "dependencies": {
-    "canvas-confetti": "1.4.0"
+    "canvas-confetti": "1.4.0",
+    "copy-text-to-clipboard": "3.0.1"
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",

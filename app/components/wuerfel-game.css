@@ -34,7 +34,16 @@
   background-color: #f7f7f7;
 }
 
-.reroll-button {
-  composes: button;
+.button:active {
+  border-color: #333;
+  background-color: #e6e6e6;
+}
+
+.buttons {
   margin-top: 60px;
+}
+
+.reroll-button,
+.copy-button {
+  composes: button;
 }

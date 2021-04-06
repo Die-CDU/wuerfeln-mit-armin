@@ -2,9 +2,14 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+import { guidFor } from '@ember/object/internals';
+
+import copy from 'copy-text-to-clipboard';
 
 export default class WuerfelGameComponent extends Component {
   @service confetti;
+
+  id = guidFor(this);
 
   @tracked dice1 = this._randomNumber();
   @tracked dice2 = this._randomNumber();
@@ -15,6 +20,18 @@ export default class WuerfelGameComponent extends Component {
   @tracked dice7 = this._randomNumber();
   @tracked dice8 = this._randomNumber();
   @tracked dice9 = this._randomNumber();
+
+  get quoteId() {
+    return this.id + '-quote';
+  }
+
+  get quoteText() {
+    return document
+      .getElementById(this.quoteId)
+      .textContent.replace(/[\r\n ]+/g, ' ')
+      .replace(/- /g, '-')
+      .trim();
+  }
 
   get text1() {
     const TEXTS1 = ['ein-', 'zwei-', 'drei-', 'vier-', 'fünf-', 'sechs-'];
@@ -157,6 +174,11 @@ export default class WuerfelGameComponent extends Component {
       origin: { x: 1 },
       colors: colors,
     });
+  }
+
+  @action copy() {
+    let text = this.quoteText + '\n— Armin Laschet';
+    copy(text);
   }
 
   _randomNumber() {
