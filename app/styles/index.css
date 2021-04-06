@@ -6,6 +6,15 @@
   color: #E32B23;
 }
 
+.heading a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.heading a:hover {
+  color: #bd241c;
+}
+
 .game {
   margin-top: 60px;
   max-width: 700px;
