@@ -20,26 +20,28 @@ export default class WuerfelGameComponent extends Component {
 
   get text2() {
     const TEXTS2 = [
-      'tägige/n',
-      'wöchige/n',
-      'monatige/n',
-      'fache/n',
-      'malige/n',
-      'hebige/n',
+      'tägige',
+      'wöchige',
+      'monatige',
+      'fache',
+      'malige',
+      'hebige',
     ];
-    return TEXTS2[this.dice2 - 1];
+    let text = TEXTS2[this.dice2 - 1];
+    return this.isMale5 ? text + 'n' : text;
   }
 
   get text3() {
     const TEXTS3 = [
-      'harte/n',
-      'softe/n',
-      'optionale/n',
-      'intransparente/n',
-      'alternativlose/n',
-      'unumkehrbare/n',
+      'harte',
+      'softe',
+      'optionale',
+      'intransparente',
+      'alternativlose',
+      'unumkehrbare',
     ];
-    return TEXTS3[this.dice3 - 1];
+    let text = TEXTS3[this.dice3 - 1];
+    return this.isMale5 ? text + 'n' : text;
   }
 
   get text4() {
@@ -64,6 +66,10 @@ export default class WuerfelGameComponent extends Component {
       'Matrix',
     ];
     return TEXTS5[this.dice5 - 1];
+  }
+
+  get isMale5() {
+    return this.dice5 === 1 || this.dice5 === 2 || this.dice5 === 5;
   }
 
   get text6() {

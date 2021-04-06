@@ -1,5 +1,5 @@
 <blockquote local-class="game" ...attributes>
-  Was wir <em>jetzt</em> brauchen, ist ein/e
+  Was wir <em>jetzt</em> brauchen, ist {{if this.isMale5 "einen" "eine"}}
   <button type="button" {{on "click" (fn this.reroll 1)}}>{{this.text1}}</button>
   <button type="button" {{on "click" (fn this.reroll 2)}}>{{this.text2}}</button>
   <button type="button" {{on "click" (fn this.reroll 3)}}>{{this.text3}}</button>
