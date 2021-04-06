@@ -16,6 +16,7 @@
 }
 
 .button {
+  box-sizing: border-box;
   display: inline-block;
   font-family: inherit;
   font-size: 28px;
@@ -49,4 +50,18 @@
 .reroll-button,
 .copy-button {
   composes: button;
+}
+
+@media only screen and (max-width: 550px) {
+  .buttons {
+    width: 100%;
+  }
+
+  .tweet-button,
+  .reroll-button,
+  .copy-button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }

@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  padding: 50px 20px 30px;
+}
+
+@media only screen and (min-width: 551px) {
+  body {
+    padding-top: 90px;
+  }
+}

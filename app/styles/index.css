@@ -1,5 +1,5 @@
 .heading {
-  margin-top: 70px;
+  margin: 0;
   font-size: 40px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -7,6 +7,6 @@
 }
 
 .game {
-  margin-top: 40px;
+  margin-top: 60px;
   max-width: 700px;
 }
