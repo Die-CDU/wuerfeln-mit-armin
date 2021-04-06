@@ -11,6 +11,10 @@
   min-height: 200px;
 }
 
+.attribution {
+  justify-self: end;
+}
+
 .button {
   display: inline-block;
   font-size: 28px;
