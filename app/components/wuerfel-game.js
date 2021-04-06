@@ -26,11 +26,32 @@ export default class WuerfelGameComponent extends Component {
   }
 
   get quoteText() {
+    // access properties to enable auto tracking
+    this.text1;
+    this.text2;
+    this.text3;
+    this.text4;
+    this.text5;
+    this.text6;
+    this.text7;
+    this.text8;
+    this.text9;
+
     return document
       .getElementById(this.quoteId)
       .textContent.replace(/[\r\n ]+/g, ' ')
       .replace(/- /g, '-')
       .trim();
+  }
+
+  get fullQuoteText() {
+    return this.quoteText + '\n— Armin Laschet';
+  }
+
+  get twitterText() {
+    return encodeURIComponent(
+      this.fullQuoteText + '\n\nhttps://die-cdu.github.io/wuerfeln-mit-armin/'
+    );
   }
 
   get text1() {
@@ -177,8 +198,7 @@ export default class WuerfelGameComponent extends Component {
   }
 
   @action copy() {
-    let text = this.quoteText + '\n— Armin Laschet';
-    copy(text);
+    copy(this.fullQuoteText);
   }
 
   _randomNumber() {

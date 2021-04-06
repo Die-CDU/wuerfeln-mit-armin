@@ -20,6 +20,16 @@
     {{#if (is-clipboard-supported)}}
       <button type="button" local-class="copy-button" {{on "click" this.copy}}>Kopieren</button>
     {{/if}}
+
+    <a
+      href="https://twitter.com/intent/tweet?text={{this.twitterText}}"
+      target="_blank"
+      rel="noreferrer noopener"
+      local-class="tweet-button"
+    >
+      Tweet
+    </a>
+
     <button type="button" local-class="reroll-button" {{on "click" this.rerollAll}}>Nochmal würfeln</button>
   </div>
 </div>

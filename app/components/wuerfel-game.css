@@ -17,15 +17,17 @@
 
 .button {
   display: inline-block;
+  font-family: inherit;
   font-size: 28px;
   line-height: 40px;
-  font-weight: 200;
+  font-weight: 400;
   background-color: transparent;
   border: 1px solid #e6e6e6;
   border-radius: 5px;
   padding: 2px 10px;
   text-align: center;
   text-decoration: none;
+  color: #333333;
   cursor: pointer;
 }
 
@@ -43,6 +45,7 @@
   margin-top: 60px;
 }
 
+.tweet-button,
 .reroll-button,
 .copy-button {
   composes: button;
