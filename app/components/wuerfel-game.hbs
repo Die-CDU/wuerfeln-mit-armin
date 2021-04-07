@@ -18,7 +18,11 @@
 
   <div local-class="buttons">
     {{#if this.speech}}
-      <button type="button" local-class="play-button" {{on "click" this.play}}>Vorlesen</button>
+      <label local-class="play-button">
+        <input type="checkbox" checked={{this.playEnabled}} {{on "change" this.setPlayEnabled}} />
+        {{svg-jar (if this.playEnabled "checkbox" "checkbox-empty")}}
+        Vorlesen
+      </label>
     {{/if}}
 
     {{#if (is-clipboard-supported)}}

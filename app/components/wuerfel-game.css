@@ -53,6 +53,15 @@
   composes: button;
 }
 
+.play-button input {
+  display: none;
+}
+
+.play-button svg {
+  height: 0.7em;
+  width: auto;
+}
+
 @media only screen and (max-width: 550px) {
   .buttons {
     width: 100%;

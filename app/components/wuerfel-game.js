@@ -19,6 +19,8 @@ export default class WuerfelGameComponent extends Component {
   @tracked dice8 = this._randomNumber();
   @tracked dice9 = this._randomNumber();
 
+  @tracked _playEnabled;
+
   get quoteText() {
     return (
       'Was wir jetzt brauchen, ist ' +
@@ -158,6 +160,19 @@ export default class WuerfelGameComponent extends Component {
     return TEXTS9[this.dice9 - 1];
   }
 
+  get playEnabled() {
+    return this._playEnabled ?? window.localStorage.getItem('AUTOPLAY');
+  }
+
+  set playEnabled(value) {
+    this._playEnabled = value;
+    if (value) {
+      window.localStorage.setItem('AUTOPLAY', 'true');
+    } else {
+      window.localStorage.removeItem('AUTOPLAY');
+    }
+  }
+
   get speech() {
     return window.speechSynthesis;
   }
@@ -165,6 +180,10 @@ export default class WuerfelGameComponent extends Component {
   constructor() {
     super(...arguments);
     this.throwConfetti();
+
+    if (this.playEnabled) {
+      this.play();
+    }
   }
 
   @action reroll(index) {
@@ -180,6 +199,10 @@ export default class WuerfelGameComponent extends Component {
     }
 
     this.throwConfetti();
+
+    if (this.playEnabled) {
+      this.play();
+    }
   }
 
   @action copy() {
@@ -206,11 +229,21 @@ export default class WuerfelGameComponent extends Component {
     });
   }
 
-  @action play() {
+  @action setPlayEnabled(event) {
+    this.playEnabled = event.target.checked;
+    if (this.playEnabled) {
+      this.play();
+    } else {
+      this.speech.cancel();
+    }
+  }
+
+  play() {
     if (this.speech) {
       let utterance = new SpeechSynthesisUtterance(this.quoteText);
       utterance.lang = 'de-DE';
       utterance.pitch = 0.7;
+      this.speech.cancel();
       this.speech.speak(utterance);
     }
   }
