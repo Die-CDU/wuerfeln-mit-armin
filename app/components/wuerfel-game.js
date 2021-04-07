@@ -186,16 +186,23 @@ export default class WuerfelGameComponent extends Component {
     }
   }
 
-  @action reroll(index) {
+  _reroll(index) {
     let oldValue = this['dice' + index];
     do {
       this['dice' + index] = this._randomNumber();
     } while (this['dice' + index] === oldValue);
   }
 
+  @action reroll(index) {
+    this._reroll(index);
+    if (this.playEnabled) {
+      this.play();
+    }
+  }
+
   @action rerollAll() {
     for (let i = 1; i <= 9; i++) {
-      this.reroll(i);
+      this._reroll(i);
     }
 
     this.throwConfetti();
