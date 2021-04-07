@@ -19,27 +19,26 @@ export default class WuerfelGameComponent extends Component {
   @tracked dice8 = this._randomNumber();
   @tracked dice9 = this._randomNumber();
 
-  get quoteId() {
-    return this.id + '-quote';
-  }
-
   get quoteText() {
-    // access properties to enable auto tracking
-    this.text1;
-    this.text2;
-    this.text3;
-    this.text4;
-    this.text5;
-    this.text6;
-    this.text7;
-    this.text8;
-    this.text9;
-
-    return document
-      .getElementById(this.quoteId)
-      .textContent.replace(/[\r\n ]+/g, ' ')
-      .replace(/- /g, '-')
-      .trim();
+    return (
+      'Was wir jetzt brauchen, ist ' +
+      (this.isMale5 ? 'einen ' : 'eine ') +
+      this.text1 +
+      this.text2 +
+      ' ' +
+      this.text3 +
+      ' ' +
+      this.text4 +
+      this.text5 +
+      ' bis ' +
+      this.text6 +
+      ' zur ' +
+      this.text7 +
+      ' ' +
+      this.text8 +
+      ' der ' +
+      this.text9
+    );
   }
 
   get fullQuoteText() {
@@ -159,6 +158,10 @@ export default class WuerfelGameComponent extends Component {
     return TEXTS9[this.dice9 - 1];
   }
 
+  get speech() {
+    return window.speechSynthesis;
+  }
+
   constructor() {
     super(...arguments);
     this.throwConfetti();
@@ -201,6 +204,15 @@ export default class WuerfelGameComponent extends Component {
       origin: { x: 1 },
       colors: colors,
     });
+  }
+
+  @action play() {
+    if (this.speech) {
+      let utterance = new SpeechSynthesisUtterance(this.quoteText);
+      utterance.lang = 'de-DE';
+      utterance.pitch = 0.7;
+      this.speech.speak(utterance);
+    }
   }
 
   _randomNumber() {
